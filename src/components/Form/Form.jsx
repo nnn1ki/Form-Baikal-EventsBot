@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Form.css'
-import {useTelegram} from "../hooks/useTelegram";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
 
@@ -14,15 +14,17 @@ const Form = () => {
         tg.MainButton.setParams({
             text: "ОТправить данные"
         })
-    }, []);
+    }, [])
 
+
+    //простейшая валидация Для заполнения всех данных
     useEffect(() => {
         if(!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, []);
+    }, [country, street]);
 
 
 

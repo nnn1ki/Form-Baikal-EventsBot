@@ -1,5 +1,5 @@
 {
     "redirects": [
-        { "source": "/", "destination": "/form", "statusCode": 308 }
+        { "source": "/", "destination": "/index.html", "statusCode": 200 }
     ]
 }
