@@ -1,7 +1,7 @@
 {
     "redirects": [
         { "source": "/", "destination": "/index.html", "permanent": false },
-        { "source": "/form", "destination": "/form.html", "permanent": false }
+        { "source": "/form", "destination": "/form.jsx", "permanent": false }
 
     ]
 }
