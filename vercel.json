@@ -1,5 +1,5 @@
 {
     "redirects": [
-        { "source": "/form", "destination": "/", "permanent": false }
+        { "source": "/", "destination": "/form", "permanent": false }
     ]
 }
