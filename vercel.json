@@ -1,8 +1,5 @@
 {
     "redirects": [
-        {
-            "source": "/",
-            "destination": "/form"
-        }
+        { "source": "/user", "destination": "/api/user", "statusCode": 200 }
     ]
 }
