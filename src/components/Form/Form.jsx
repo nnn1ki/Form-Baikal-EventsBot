@@ -32,7 +32,7 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: "ОТправить данные"
+            text: "Отправить данные"
         })
     }, [])
 
