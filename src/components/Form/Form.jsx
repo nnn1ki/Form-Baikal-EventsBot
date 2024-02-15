@@ -198,7 +198,7 @@ const Form = () => {
             </select>
 
             <textarea
-                className={'input'}
+                className={'textarea'}
                 placeholder={'Описание вопроса'}
                 value={questionDescription}
                 onChange={onChangeQuestionDescription}
