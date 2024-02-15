@@ -120,26 +120,30 @@ const Form = () => {
             userEmail,
         };
         tg.sendData(JSON.stringify(data));
+        console.log("Данные, полученные с формы - ", data); //данные получены корректно
+        response(); //попытка отправить данные в базу данных
     }, [fullName, selectedSpecialist, questionDescription, userEmail]);
 
 
     // Отправка данных на сервер
-    fetch('https://localhost:8000', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log('Данные успешно отправлены на сервер:', result);
-            // Дополнительная обработка при необходимости
+    const response = () => {
+        fetch('http://localhost:8000/api/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
         })
-        .catch((error) => {
-            console.error('Ошибка при отправке данных на сервер:', error);
-            // Обработка ошибки при необходимости
-        });
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('Данные успешно отправлены на сервер:', result);
+                // Дополнительная обработка при необходимости
+            })
+            .catch((error) => {
+                console.error('Ошибка при отправке данных на сервер:', error);
+                // Обработка ошибки при необходимости
+            });
+    }
 
 
     useEffect(() => {
@@ -215,6 +219,9 @@ const Form = () => {
             <span className={"under-form"}>
                 Спасибо большое за Ваше обращение, мы обязательно Вам ответим в течение 3-х рабочих дней.
             </span>
+
+
+            <Button onClick={onSendData}>Отправить</Button>
 
         </div>
     );
