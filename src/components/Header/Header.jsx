@@ -3,6 +3,9 @@ import Button from "../Buttons/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import './Header.css';
 
+
+//todo - написать правила использования формы обратной связи
+
 const Header = (props) => {
 
     const {user, onClose, } = useTelegram();
