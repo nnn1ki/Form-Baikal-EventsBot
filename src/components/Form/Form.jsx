@@ -155,7 +155,7 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные',
+            text: 'Отправить',
         });
     }, []);
 
@@ -221,7 +221,7 @@ const Form = () => {
             </span>
 
 
-            <Button onClick={onSendData}>Отправить</Button>
+            {/*<Button onClick={onSendData}>Отправить</Button>*/}
 
         </div>
     );
