@@ -9,3 +9,7 @@
 .username {
     margin-left: auto;
 }
+
+.info {
+    display: inline-block;
+}
