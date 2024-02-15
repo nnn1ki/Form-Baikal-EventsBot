@@ -211,7 +211,14 @@ const Form = () => {
                 value={userEmail}
                 onChange={onChangeUserEmail}
             />
+
+            <span>
+                Спасибо большое за ваше обращение, мы обязательно вам ответим в течение 3-х рабочих дней.
+            </span>
+
         </div>
+
+
 
     );
 };

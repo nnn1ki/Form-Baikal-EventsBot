@@ -8,14 +8,16 @@ import './Header.css';
 
 const Header = (props) => {
 
-    const {user, onClose, } = useTelegram();
-
-
     return (
         <div className={'header'}>
-            <Button onClick={onClose}>Закрыть</Button>
+            <span className={'info'}>
+                Форма обратной связи
+            </span>
             <span className={'username'}>
-                {user?.username}
+                Добро пожаловать, {user?.username}
+            </span>
+            <span className={'info'}>
+                Укажите Ваше ФИО, специалиста к которому хотите обратиться, опишите сам вопрос и Email для обратной связи
             </span>
         </div>
     );
