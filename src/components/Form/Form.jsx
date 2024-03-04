@@ -1,97 +1,3 @@
-// import React, {useCallback, useEffect, useState} from 'react';
-// import './Form.css'
-// import {useTelegram} from "../../hooks/useTelegram";
-//
-// const Form = () => {
-//
-//     const [country, setCountry] = useState('');
-//     const [street, setStreet] = useState('');
-//     const [subject, setSubject] = useState('physical');
-//     const {tg} = useTelegram();
-//
-//
-//
-//     const onSendData = useCallback(() => {
-//         const data = {
-//             country,
-//             street,
-//             subject
-//         }
-//         tg.sendData(JSON.stringify(data));
-//     }, [country, street, subject])
-//
-//     useEffect(() => {
-//         tg.onEvent('mainButtonClicked', onSendData)
-//         return () => {
-//             tg.offEvent('mainButtonClicked', onSendData)
-//         }
-//     }, [onSendData])
-//
-//
-//
-//
-//     useEffect(() => {
-//         tg.MainButton.setParams({
-//             text: "Отправить данные"
-//         })
-//     }, [])
-//
-//
-//     //простейшая валидация Для заполнения всех данных
-//     useEffect(() => {
-//         if(!street || !country) {
-//             tg.MainButton.hide();
-//         } else {
-//             tg.MainButton.show();
-//         }
-//     }, [country, street]);
-//
-//
-//
-//
-//     const onChangeCountry = (e) => {
-//         setCountry(e.target.value)
-//     }
-//
-//     const onChangeStreet = (e) => {
-//         setStreet(e.target.value)
-//     }
-//
-//     const onChangeSubject = (e) => {
-//         setSubject(e.target.value)
-//     }
-//
-//
-//
-//     return (
-//         <div className={"form"}>
-//             <h3>Введите данные</h3>
-//             <input
-//                 className={"input"}
-//                 type={"text"}
-//                 placeholder={"Страна"}
-//                 value={country}
-//                 onChange={onChangeCountry}
-//             />
-//
-//             <input
-//                 className={"input"}
-//                 type={"text"}
-//                 placeholder={"Улица"}
-//                 value={street}
-//                 onChange={onChangeStreet}
-//             />
-//
-//             <select value={subject} onChange={onChangeSubject} className={"select"} >
-//                 <option value={"physical"}>Физ.Лицо</option>
-//                 <option value={"legal"}>Юр.Лицо</option>
-//             </select>
-//         </div>
-//     );
-// };
-//
-// export default Form;
-
 import React, { useCallback, useEffect, useState } from 'react';
 import './Form.css';
 import { useTelegram } from '../../hooks/useTelegram';
@@ -112,7 +18,7 @@ const Form = () => {
 
     const { tg } = useTelegram();
 
-    const onSendData = useCallback(() => {
+    const onSendData = useCallback( async () => {
         const data = {
             fullName,
             selectedSpecialist,
@@ -121,13 +27,16 @@ const Form = () => {
         };
         tg.sendData(JSON.stringify(data));
         console.log("Данные, полученные с формы - ", data); //данные получены корректно
-        response(); //попытка отправить данные в базу данных
-    }, [fullName, selectedSpecialist, questionDescription, userEmail]);
+        await response(); //попытка отправить данные в базу данных
+        
+        // await tg.close();
+        // onClose();
+    }, [fullName, selectedSpecialist, questionDescription, userEmail,]);
 
 
     // Отправка данных на сервер
-    const response = () => {
-        fetch('http://89.104.66.77:8000/api/', {
+    const response = async () => {
+        fetch('https://bf-bot.conferoom.ru/api/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,6 +47,7 @@ const Form = () => {
             .then((result) => {
                 console.log('Данные успешно отправлены на сервер:', result);
                 // Дополнительная обработка при необходимости
+                tg.close();
             })
             .catch((error) => {
                 console.error('Ошибка при отправке данных на сервер:', error);
