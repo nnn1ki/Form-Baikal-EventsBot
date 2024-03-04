@@ -127,7 +127,7 @@ const Form = () => {
 
     // Отправка данных на сервер
     const response = () => {
-        fetch('http://localhost:8000/api/', {
+        fetch('http://89.104.66.77:8000/api/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

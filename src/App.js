@@ -21,9 +21,9 @@ function App() {
 
     return (
     <div className="App">
-        <Header/>
         <Routes>
             <Route index element={<Form />} />
+            {/* <Route path="/react" component={<Form />} /> */}
         </Routes>
 
     </div>
