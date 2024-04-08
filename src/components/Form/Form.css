@@ -5,33 +5,27 @@
     max-width: 400px; /* Ограничиваем максимальную ширину формы */
     margin: 0 auto; /* Центрируем форму по горизонтали */
     padding: 20px;
-    border: 1px solid #ccc; /* Добавляем рамку для формы */
     border-radius: 8px; /* Добавляем скругленные углы */
-    background-color: #f9f9f9; /* Задаем фоновый цвет */
-}
-
-.form-group {
-    margin-bottom: 15px; /* Увеличиваем расстояние между группами полей */
+    background-color: var(--telegram-background); /* Используем переменную для фонового цвета */
+    color: var(--telegram-color); /* Используем переменную для цвета текста */
 }
 
 .label {
     font-weight: bold; /* Делаем метки полей жирными */
 }
 
-.input {
-    width: calc(100% - 20px); /* Вычитаем ширину внешних отступов из ширины поля */
-    padding: 10px;
-    margin-top: 5px; /* Уменьшаем верхний отступ */
-    border: 1px solid #ccc; /* Добавляем рамку для поля */
-    border-radius: 4px; /* Добавляем скругленные углы */
-}
-
+.input,
 .select {
     width: calc(100% - 20px); /* Вычитаем ширину внешних отступов из ширины поля */
     padding: 10px;
     margin-top: 5px; /* Уменьшаем верхний отступ */
-    border: 1px solid #ccc; /* Добавляем рамку для поля */
+    border: 1px solid var(--telegram-border); /* Используем переменную для цвета рамки */
     border-radius: 4px; /* Добавляем скругленные углы */
+    background-color: var(--telegram-input-background); /* Используем переменную для фонового цвета поля */
+    color: var(--telegram-color); /* Используем переменную для цвета текста */
+}
+
+.select {
     appearance: none; /* Убираем стандартный стиль выпадающего списка */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15L3 8h14z"/></svg>'); /* Добавляем кастомную стрелку */
     background-repeat: no-repeat;
