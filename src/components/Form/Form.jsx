@@ -37,45 +37,76 @@ const Form = () => {
 
     return (
         <div className="form">
-            <h3>Заполните данные формы для отправки информации организаторам</h3>
-            <label>
-                Количество взрослых:
-                <input type="number" value={adultsCount} onChange={(e) => setAdultsCount(parseInt(e.target.value))} />
-            </label>
-            <label>
-                Количество детей:
-                <input type="number" value={childrenCount} onChange={handleChildrenCountChange} />
-            </label>
-            {childrenAges.map((age, index) => (
-                <label key={index}>
-                    Возраст ребенка {index + 1}:
-                    <input type="text" value={age} onChange={(e) => handleChildAgeChange(index, e)} />
-                </label>
-            ))}
-            <label>
-                <input type="checkbox" checked={needsTransfer} onChange={(e) => setNeedsTransfer(e.target.checked)} />
-                Нужна помощь с трансфером
-            </label>
-            <label>
+            <h2>Заполните данные формы для отправки информации организаторам</h2>
+            <div className="form-group">
+                <label htmlFor="adultsCount">Взрослые:</label>
                 <input
+                    id="adultsCount"
+                    type="number"
+                    value={adultsCount}
+                    onChange={(e) => setAdultsCount(parseInt(e.target.value))}
+                    className="small-input"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="childrenCount">Дети:</label>
+                <input
+                    id="childrenCount"
+                    type="number"
+                    value={childrenCount}
+                    onChange={handleChildrenCountChange}
+                    className="small-input"
+                />
+            </div>
+            {childrenAges.map((age, index) => (
+                <div className="form-group" key={index}>
+                    <label htmlFor={`childAge${index + 1}`}>Возраст ребенка {index + 1}:</label>
+                    <input
+                        id={`childAge${index + 1}`}
+                        type="text"
+                        value={age}
+                        onChange={(e) => handleChildAgeChange(index, e)}
+                    />
+                </div>
+            ))}
+
+            <br/>
+
+            <div className="form-group">
+                <input
+                    id="needsTransfer"
+                    type="checkbox"
+                    checked={needsTransfer}
+                    onChange={(e) => setNeedsTransfer(e.target.checked)}
+                />
+                <label htmlFor="needsTransfer">Нужна помощь с трансфером</label>
+            </div>
+            <div className="form-group">
+                <input
+                    id="certificateNeeded"
                     type="checkbox"
                     checked={certificateNeeded}
                     onChange={(e) => setCertificateNeeded(e.target.checked)}
                 />
-                Получить свидетельство об прохождении курсов
-            </label>
-            <label>
-                Телефон:
+                <label htmlFor="certificateNeeded">Получить свидетельство об прохождении курсов</label>
+            </div>
+
+            <br/>
+
+            <div className="form-group">
+                <label htmlFor="phoneNumber">Телефон:</label>
                 <input
+                    id="phoneNumber"
                     type="text"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="+7 (___) ___-__-__"
                     maxLength="18"
                 />
-            </label>
+            </div>
             <Button onClick={handleFormSubmit}>Отправить</Button>
         </div>
+
     );
 };
 
